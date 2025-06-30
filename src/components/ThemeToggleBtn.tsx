@@ -7,13 +7,13 @@ const ThemeToggleBtn = () => {
   return (
     <div
       onClick={toggleTheme}
-      className="cursor-pointer transition-all duration-300 hover:scale-105 bg-[#191934] w-40 rounded-[44px] border-2 border-[#5B4B8973] shadow-inner"
-      style={{ boxShadow: "inset 0 4px 12px rgba(0, 0, 0, 0.6)" }}
+      className="cursor-pointer transition-all duration-300  rounded-[44px] border-1 border-[#5B4B8973] shadow-inner"
+      style={{ boxShadow: "inset 0 4px 12px rgba(0, 0, 0, 0.2)" }}
     >
       <img
         src="/src/assets/themeToggleBtn.png"
         alt="Toggle"
-        className="w-full h-auto p-2"
+        className="w-[50%] h-auto "
       />
     </div>
   );
