@@ -1,3 +1,8 @@
+import { useState } from "react";
+// ... other imports
+import ProfileCard from "../components/Profile";
+import AiJourneyTile from "../components/dashboard/AiJourneyTile";
+import BranchingPathsTile from "../components/dashboard/BranchingPathsTile";
 import { GenerateButtonTile } from "../components/dashboard/GenerateButtonTile";
 import { HeroBlock } from "../components/dashboard/HeroBlock";
 import { PromptServiceTile } from "../components/dashboard/PromptServiceTile";
@@ -5,11 +10,12 @@ import { StatsTile } from "../components/dashboard/StatsTile";
 import { ThemeTile } from "../components/dashboard/ThemeTile";
 import { TopUsersTile } from "../components/dashboard/TopUsersTile";
 import { TrialCard } from "../components/dashboard/TrialCard";
-import AiJourneyTile from "../components/dashboard/AiJourneyTile";
-import BranchingPathsTile from "../components/dashboard/BranchingPathsTile";
-import Profile from "../components/Profile";
+import { AnimatePresence } from "framer-motion";
+import CarouselPopup from "../components/CarouselPopup";
 
 function Dashboard() {
+  const [showProfile, setShowProfile] = useState(false);
+
   return (
     <>
       <div className="w-screen h-screen bg-black flex items-center justify-center overflow-hidden">
@@ -23,7 +29,8 @@ function Dashboard() {
             <ThemeTile />
             <PromptServiceTile />
             <AiJourneyTile />
-            <TopUsersTile />
+            {/* Pass setShowProfile to TopUsersTile */}
+            <TopUsersTile onClick={() => setShowProfile(true)} />
             <StatsTile />
             <BranchingPathsTile />
             <GenerateButtonTile />
@@ -31,11 +38,14 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* popups */}
-      <Profile />
+      {/* Fade animation wrapper */}
+      <AnimatePresence>
+        {showProfile && <ProfileCard onClose={() => setShowProfile(false)} />}
+      </AnimatePresence>
+
+    <CarouselPopup/>
+
     </>
-
-
   );
 }
 
